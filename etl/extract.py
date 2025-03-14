@@ -1,9 +1,11 @@
 import requests
 import json
 import os
+from dotenv import load_dotenv
 
 # 🔑 Ta clé API
-API_KEY = "c56943e7347c4be89862ae6e4a6992bc"
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
 BASE_URL = "https://api.football-data.org/v4"
 
 # 📂 Dossier où stocker les fichiers JSON
