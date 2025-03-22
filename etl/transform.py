@@ -1,10 +1,9 @@
 import json
 
-# 📂 Dossier où sont stockées les données JSON
+
 DATA_DIR = "etl/data"
 
 def transform_teams():
-    """Lit le fichier JSON et transforme les données des équipes."""
     file_path = f"{DATA_DIR}/teams.json"
 
     try:
@@ -25,9 +24,9 @@ def transform_teams():
         return transformed
 
     except FileNotFoundError:
-        print(f"❌ Le fichier {file_path} n'existe pas. Exécute d'abord extract.py.")
+        print(f"Le fichier {file_path} n'existe pas. Exécute d'abord extract.py.")
         return []
 
 if __name__ == "__main__":
     transformed_data = transform_teams()
-    print("✅ Données transformées :", transformed_data)
+    print("Données transformées :", transformed_data)

@@ -1,11 +1,10 @@
 import sqlite3
-import transform  # On importe les données transformées
+import transform  
 
 DB_PATH = "database/footboard.db"
 
 def insert_teams():
-    """Insère les équipes dans la table teams."""
-    teams = transform.transform_teams()  # 🔥 Récupère les équipes transformées
+    teams = transform.transform_teams()  
 
     if not teams:
         print("⚠️ Aucune équipe à insérer.")
