@@ -3,15 +3,12 @@ import json
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 BASE_URL = "https://api.football-data.org/v4"
 
-
 DATA_DIR = "etl/data"
-os.makedirs(DATA_DIR, exist_ok=True)  
-
+os.makedirs(DATA_DIR, exist_ok=True)
 
 def get_teams(competition="PL"):
     url = f"{BASE_URL}/competitions/{competition}/teams"
@@ -20,18 +17,17 @@ def get_teams(competition="PL"):
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
-        teams = response.json()
+        teams_data = response.json()
+
+        file_path = f"{DATA_DIR}/teams.json"
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(teams_data, f, indent=2, ensure_ascii=False)
         
-        
-        with open(f"{DATA_DIR}/teams.json", "w", encoding="utf-8") as f:
-            json.dump(teams, f, indent=2, ensure_ascii=False)
-        
-        print(f"Données des équipes enregistrées dans {DATA_DIR}/teams.json")
-        return teams
+        print(f"Team data saved to {file_path}")
+        return teams_data
     else:
-        print(f"Erreur API: {response.status_code}")
+        print(f"API error: {response.status_code}")
         return None
 
 if __name__ == "__main__":
     get_teams()
-

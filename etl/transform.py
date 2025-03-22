@@ -1,6 +1,5 @@
 import json
 
-
 DATA_DIR = "etl/data"
 
 def transform_teams():
@@ -16,17 +15,17 @@ def transform_teams():
                 "id": team["id"],
                 "nom": team["name"],
                 "short_name": team["shortName"],
-                "tla": team["tla"],  
-                "fondation": team.get("founded", None),  
-                "venue": team.get("venue", None)  
+                "tla": team["tla"],
+                "fondation": team.get("founded", None),
+                "venue": team.get("venue", None)
             })
 
         return transformed
 
     except FileNotFoundError:
-        print(f"Le fichier {file_path} n'existe pas. Exécute d'abord extract.py.")
+        print(f"File {file_path} not found. Please run extract.py first.")
         return []
 
 if __name__ == "__main__":
     transformed_data = transform_teams()
-    print("Données transformées :", transformed_data)
+    print("Transformed data:", transformed_data)
