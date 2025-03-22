@@ -26,6 +26,3 @@ def transform_teams():
         print(f"File {file_path} not found. Please run extract.py first.")
         return []
 
-if __name__ == "__main__":
-    transformed_data = transform_teams()
-    print("Transformed data:", transformed_data)

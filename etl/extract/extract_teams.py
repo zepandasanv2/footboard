@@ -28,6 +28,3 @@ def get_teams(competition="PL"):
     else:
         print(f"API error: {response.status_code}")
         return None
-
-if __name__ == "__main__":
-    get_teams()

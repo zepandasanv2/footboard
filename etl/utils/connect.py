@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_PATH = "footboard.db"
+DB_PATH = "database/footboard.db"
 
 def connect_db():
     conn = sqlite3.connect(DB_PATH)

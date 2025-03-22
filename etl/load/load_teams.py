@@ -1,18 +1,15 @@
-import sqlite3
-import transform
+from etl.utils.connect import connect_db
+
 
 DB_PATH = "database/footboard.db"
 
-def insert_teams():
-    teams = transform.transform_teams()
-
+def insert_teams(teams):
     if not teams:
         print("No team to insert.")
         return
 
     try:
-        conn = sqlite3.connect(DB_PATH)
-        cursor = conn.cursor()
+        conn, cursor = connect_db()
 
         for team in teams:
             cursor.execute("""
@@ -36,6 +33,4 @@ def insert_teams():
     except Exception as e:
         print(f"Error inserting teams: {e}")
 
-if __name__ == "__main__":
-    insert_teams()
 
